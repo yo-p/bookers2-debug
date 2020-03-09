@@ -4,7 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,:validatable
 
+  has_many :favorites, dependent: :destroy #userは複数のいいねをする
+
+  #has_many :liked_books, through: :likes, source: :book
+
   has_many :books, dependent: :destroy
+
   attachment :profile_image
 
   #バリデーションは該当するモデルに設定する。エラーにする条件を設定できる。
