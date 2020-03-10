@@ -32,7 +32,7 @@
 						<% end %>
 					</td>
 					<td><% if current_user.already_favorited?(@book) %>
-							<%= button_to 'いいねを消す', book_favorite_path(@book), method: :delete %>
+							<%= button_to 'いいねを消す', book_favorites_path(@book), method: :delete %>
 						<% else %>
 							<%= button_to 'いいね', book_favorites_path(@book) %>
 						<% end %>
