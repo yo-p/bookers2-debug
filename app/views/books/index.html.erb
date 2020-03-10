@@ -9,7 +9,7 @@
 	<% end %>	
 
 		<%= render 'users/profile', user: current_user %>
-		<!--メモ　右側の指定に注意。そこを間違えるとエラーが発生して表示されない -->
+		<!--メモ右側の指定に注意。そこを間違えるとエラーが発生して表示されない -->
 
 		<%= render 'books/newform', book: @book, user: @user %>
 	</div>
@@ -24,20 +24,30 @@
 					<th>Title</th>
 					<th>Opinion</th>
 					<th colspan="3"></th>
+					<th colspan="3"></th>
+					<th colspan="3"></th>
 				</tr>
 			</thead>
 
 			<tbody>
 				<% @books.each do |book| %>
-				<tr>
-					<td>
-						<%= link_to user_path(book.user) do %>
-						<%= attachment_image_tag book.user, :profile_image, size:"50x50",format:'jpeg', fallback: "no-image-mini.jpg" %>
-						<% end %>
-					</td>
-					<td><%= link_to book.title, book, class: "book_#{book.id}" %></td>
-					<td><%= book.body %></td>
-				</tr>
+					<tr>
+						<td>
+							<%= link_to user_path(book.user) do %>
+							<%= attachment_image_tag book.user, :profile_image, size:"50x50",format:'jpeg', fallback: "no-image-mini.jpg" %>
+							<% end %>
+						</td>
+						<td><%= link_to book.title, book, class: "book_#{book.id}" %></td>
+						<td><%= book.body %></td>
+						<td>
+							<% if current_user.already_favorited?(book) %>
+								<%= button_to 'いいねを消す', book_favorites_path(book), method: :delete %>
+							<% else %>
+								<%= button_to 'いいね', book_favorites_path(book) %>
+							<% end %>
+						</td>
+						<td>いいね件数: <%= book.favorites.count %></td>
+					</tr>
 				<% end %>
 			</tbody>
 		</table>
