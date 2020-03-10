@@ -31,6 +31,14 @@
 					<%= link_to "Destroy",@book, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{@book.id}" %>
 						<% end %>
 					</td>
+					<td><% if current_user.already_favorited?(@book) %>
+							<%= button_to 'いいねを消す', book_favorite_path(@book), method: :delete %>
+						<% else %>
+							<%= button_to 'いいね', book_favorites_path(@book) %>
+						<% end %>
+					</td>
+					<td>いいね件数: <%= @book.favorites.count %></td>
+					</td>
 				</tr>
 			</table>
 
