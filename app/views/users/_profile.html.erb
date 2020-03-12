@@ -13,6 +13,25 @@
 			<th>introduction</th>
 			<th><%= user.introduction %></th>
 		</tr>
+		<tr>
+			<th>following</th>
+			<th>
+				<%= link_to following_user_path(user) do %>
+					<%=  user.followings.count %>
+				<% end %>
+			</th>
+		</tr>
+		<tr>
+			<th>follower</th>
+			<th>
+				<%= link_to followers_user_path(user) do %>
+					<%=  user.followers.count %>
+				<% end %>
+			</th>
+		</tr>
+		<th>
+			<th><%= render 'users/follow_form' %></th>
+		</th>
 </table>
 
 <div class="row">
