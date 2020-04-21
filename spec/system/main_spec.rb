@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe 'ユーザー権限のテスト'  do
+describe 'ユーザー権限のテスト' do
   let!(:user) { create(:user) }
   let!(:book) { create(:book, user: user) }
   describe 'ログインしていない場合' do
