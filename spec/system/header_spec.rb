@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'ヘッダーのテスト' do
@@ -13,22 +15,22 @@ describe 'ヘッダーのテスト' do
       it 'Homeリンクが表示される' do
         home_link = find_all('a')[0].native.inner_text
         expect(home_link).to match(/home/i)
-        #is_expected.to have_content 'Home'
+        # is_expected.to have_content 'Home'
       end
       it 'Aboutリンクが表示される' do
         about_link = find_all('a')[1].native.inner_text
         expect(about_link).to match(/about/i)
-        #is_expected.to have_content 'About'
+        # is_expected.to have_content 'About'
       end
       it 'Sign upリンクが表示される' do
         signup_link = find_all('a')[2].native.inner_text
         expect(signup_link).to match(/sign up/i)
-        #is_expected.to have_content 'Sign up'
+        # is_expected.to have_content 'Sign up'
       end
       it 'loginリンクが表示される' do
         login_link = find_all('a')[3].native.inner_text
         expect(login_link).to match(/login/i)
-        #is_expected.to have_content 'login'
+        # is_expected.to have_content 'login'
       end
     end
     context 'ヘッダーのリンクを確認' do
@@ -98,7 +100,7 @@ describe 'ヘッダーのテスト' do
         home_link = find_all('a')[0].native.inner_text
         home_link = home_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link home_link
-        is_expected.to eq('/users/'+user.id.to_s)
+        is_expected.to eq('/users/' + user.id.to_s)
       end
       it 'Users画面に遷移する' do
         users_link = find_all('a')[1].native.inner_text
