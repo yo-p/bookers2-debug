@@ -28,17 +28,17 @@ class SearchController < ApplicationController
 
   def backward(model, content)
     if model == 'user'
-      User.where('name LIKE ?', "#{content}%")
+      User.where('name LIKE ?', "%#{content}")
     elsif model == 'book'
-      Book.where('title LIKE ?', "#{content}%")
+      Book.where('title LIKE ?', "%#{content}")
     end
   end
 
   def partical(model, content)
     if model == 'user'
-      User.where('name LIKE ?', "#{content}%")
+      User.where('name LIKE ?', "%#{content}%")
     elsif model == 'book'
-      Book.where('title LIKE ?', "#{content}%")
+      Book.where('title LIKE ?', "%#{content}%")
     end
   end
 
@@ -52,6 +52,6 @@ class SearchController < ApplicationController
       backward(model, content)
     when 'partical'
       partical(model, content)
-        end
+    end
   end
 end
