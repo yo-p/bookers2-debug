@@ -14,6 +14,10 @@ class User < ApplicationRecord
   has_many :follower_relationshops, foreign_key: 'following_id', class_name: 'Relationship', dependent: :destroy
   has_many :followers, through: :follower_relationshops
 
+  has_many :favorites, dependent: :destroy #userは複数のいいねをする
+
+  #has_many :liked_books, through: :likes, source: :book
+
   has_many :books, dependent: :destroy
 
   has_many :favorites, dependent: :destroy
