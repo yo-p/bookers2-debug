@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'ユーザー認証のテスト' do
@@ -122,7 +124,7 @@ describe 'ユーザーのテスト' do
         fill_in 'user[name]', with: ''
         click_button 'Update User'
         expect(page).to have_content 'error'
-				#もう少し詳細にエラー文出したい
+        # もう少し詳細にエラー文出したい
         expect(current_path).to eq('/users/' + user.id.to_s)
       end
     end

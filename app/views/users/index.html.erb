@@ -1,35 +1,18 @@
 <div class="row">
-	<div class="col-xs-3">
-<%= render 'users/profile', user: current_user %>
-<!--メモ　右側の指定に注意。そこを間違えるとエラーが発生して表示されない -->
-<%= render 'books/newform', book: @book, user: @user%>
-	</div>
-
-	<div class="col-xs-9">
-		<h2>Users</h2>
-<!--users一覧 -->
-<table class="table">
-	<thead>
-		<tr>
-			<th>image</th>
-			<th>name</th>
-			<th colspan="3"></th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<% @users.each do |user| %>
-		<tr>
-			<td><%= attachment_image_tag user, :profile_image, size: "50x50", fallback: "no-image-mini.jpg" %></td>
-			<td><%= user.name%></td>
-			<td><%= link_to "Show", user, class: "user_#{user.id}" %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
-<!--users一覧 -->
-
-	</div>
+  <!--検索機能-->
+  <%= render 'search/search_for' %>
+  <!--検索機能-->
+  <div class="col-xs-3">
+    <%= render 'users/profile', user: current_user %>
+    <!--メモ右側の指定に注意。そこを間違えるとエラーが発生して表示されない -->
+    <%= render 'books/newform', book: @book, user: @user%>
+  </div>
+  <div class="col-xs-9">
+  <h2>Users</h2>
+    <!--users一覧 -->
+    <%= render 'index', users: @users %>
+    <!--users一覧 -->
+  </div>
 </div>
 
 
